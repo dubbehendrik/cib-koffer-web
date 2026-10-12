@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Labor to go: Der kostenlose Chemiekoffer der Hochschule Esslingen für Schulen. Versuche rund um Farben und Lacke, Informationen für Lehrkräfte und Kofferanfragen.">
+<title>Labor to go: Der Chemiekoffer der Hochschule Esslingen</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Figtree:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  --bg:#FFFFFF; color-scheme:light; --surface:#FFFFFF; --ink:#0F2D53; --muted:#46557A; --line:#D0DDEB;
+  --blue:#0F2D53; --accent:#C32E42; --mid:#3F7FC1; --on-blue:#FFFFFF; --on-accent:#FFFFFF;
+  --display:"Bricolage Grotesque","Arial Narrow",Arial,sans-serif;
+  --body:"Figtree",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1.0625rem/1.6 var(--body)}
+h1,h2,h3{font-family:var(--display);line-height:1.08;margin:0 0 .5em;letter-spacing:-.01em}
+h1{font-size:clamp(2.4rem,8vw,4.6rem);font-weight:800}
+h2{font-size:clamp(1.7rem,4.5vw,2.5rem);font-weight:800}
+h3{font-size:1.2rem;font-weight:500}
+p{margin:0 0 1em;max-width:62ch}
+a{color:var(--blue)}
+:focus-visible{outline:3px solid var(--mid);outline-offset:3px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 1.25rem}
+section{padding:3.5rem 0;border-top:1px solid var(--line)}
+.btn{display:inline-block;background:var(--accent);color:var(--on-accent);font:600 1.05rem var(--body);padding:.85em 1.5em;border:0;border-radius:6px;text-decoration:none;cursor:pointer}
+.btn:hover{filter:brightness(.95)}
+.btn.ghost{background:transparent;color:var(--ink);border:2px solid var(--ink)}
+.draft-notice{background:#fff3cd;color:#594400;border-bottom:1px solid #e8cc72;padding:.8rem 0;font-size:1rem}
+.draft-notice p{margin:0;max-width:none}
+/* Hero */
+.hero{border-top:0;padding:2.5rem 0 3.5rem}
+.top{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1rem 0 2.5rem;font-weight:600}
+.logo{display:block}
+.logo img{display:block}
+.hero-grid{display:grid;gap:2.5rem;align-items:center}
+@media(min-width:820px){.hero-grid{grid-template-columns:1.15fr 1fr}}
+.hero p.lead{font-size:1.25rem;color:var(--muted)}
+.photo{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:1rem}
+.photo figcaption{font-size:.85rem;color:var(--muted);padding-top:.6rem}
+/* Grids */
+.cols{display:grid;gap:1.25rem}
+@media(min-width:720px){.cols.three{grid-template-columns:repeat(3,1fr)}.cols.two{grid-template-columns:1fr 1fr}}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:1.4rem}
+.panel .swatch{display:block;width:2.5rem;height:.5rem;border-radius:3px;margin-bottom:.9rem}
+.panel p{margin:0;color:var(--muted)}
+dl.facts{display:grid;grid-template-columns:auto 1fr;gap:.9rem 1.5rem;margin:0}
+dt{font-weight:600}dd{margin:0;color:var(--muted)}
+/* Ablauf */
+ol.steps{list-style:none;margin:0;padding:0;display:grid;gap:1rem;counter-reset:s}
+@media(min-width:820px){ol.steps{grid-template-columns:repeat(4,1fr)}}
+ol.steps li{counter-increment:s;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:1.2rem;position:relative}
+ol.steps li::before{content:counter(s);display:grid;place-items:center;width:2rem;height:2rem;border-radius:50%;background:var(--blue);color:var(--on-blue);font:800 1rem var(--display);margin-bottom:.7rem}
+ol.steps b{display:block;font-family:var(--display);font-size:1.15rem}
+ol.steps span{color:var(--muted);font-size:.97rem}
+/* Studium */
+.study{background:var(--blue);color:var(--on-blue);border-radius:14px;padding:2rem}
+.study h2,.study p{color:inherit}
+blockquote{margin:1.5rem 0 0;padding-left:1rem;border-left:4px solid currentColor;font-family:var(--display);font-size:1.3rem;font-weight:500;max-width:46ch}
+blockquote footer{font:400 .95rem var(--body);margin-top:.5rem;opacity:.85}
+/* Downloads */
+.dl{list-style:none;margin:0;padding:0;display:grid;gap:.75rem}
+.dl a{display:flex;justify-content:space-between;gap:1rem;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:1rem 1.2rem;color:var(--ink);text-decoration:none;font-weight:600}
+.dl a:hover{border-color:var(--blue)}
+.dl small{color:var(--muted);font-weight:400}
+/* Form + FAQ */
+label{display:block;font-weight:600;margin:0 0 .3rem}
+input,select,textarea{width:100%;font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:.7em .8em;margin-bottom:1rem}
+textarea{min-height:7rem;resize:vertical}
+.hint{font-size:.9rem;color:var(--muted)}
+details{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:.9rem 1.1rem;margin-bottom:.7rem}
+summary{font-weight:600;cursor:pointer}
+details p{margin:.7rem 0 0;color:var(--muted)}
+footer.site{padding:2rem 0 3rem;border-top:1px solid var(--line);color:var(--muted);font-size:.93rem}
+.btns{display:flex;flex-wrap:wrap;gap:.75rem}
+.col{display:flex;flex-direction:column}
+.box{flex:1;display:flex;flex-direction:column}
+.box details{flex:none;display:flex;flex-direction:column;justify-content:center;min-height:3.25rem;padding:.35rem 1.1rem;margin-bottom:.7rem}
+.box summary{font-size:.97rem;line-height:1.25}
+input,select{height:3.25rem;padding-top:0;padding-bottom:0}
+@media(min-width:720px){.faq .box{padding-top:calc(1.0625rem*1.6 + .3rem)}}
+.box details:last-of-type{margin-bottom:0}
+.box .hint{margin-bottom:0}
+footer.site a{overflow-wrap:anywhere}
+.optional{font-weight:400;color:var(--muted);font-size:.9em}
+input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--mid);outline-offset:2px}
+.btn:focus-visible{outline:3px solid var(--mid);outline-offset:3px}
+nav a{white-space:nowrap}
+@media(max-width:640px){nav{width:100%;overflow-x:auto;padding-bottom:.25rem}nav a{font-size:.95rem}}
+
+@media(max-width:640px){
+ section{padding:2.5rem 0}
+ .top{flex-wrap:wrap;padding-bottom:1.5rem}
+ .logo img{height:2.6rem!important}
+ .btns .btn{width:100%;text-align:center}
+ .study{padding:1.4rem}
+ blockquote{font-size:1.1rem}
+ dl.facts{grid-template-columns:1fr;gap:.2rem}
+ dd{margin-bottom:.8rem}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+@media(prefers-reduced-motion:no-preference){.vial{animation:rise .9s ease-out both}.vial:nth-child(2){animation-delay:.12s}.vial:nth-child(3){animation-delay:.24s}.vial:nth-child(4){animation-delay:.36s}@keyframes rise{from{transform:translateY(14px);opacity:0}}}
+</style>
+</head>
+<body>
+<aside class="draft-notice" aria-label="Entwurfshinweis"><div class="wrap"><p><strong>Under construction – Website im Entwurf.</strong> Diese Website befindet sich noch im Aufbau. Inhalte und Funktionen werden derzeit überarbeitet.</p></div></aside>
+<header class="hero">
+ <div class="wrap">
+  <div class="top"><a class="logo" href="https://www.hs-esslingen.de" aria-label="Hochschule Esslingen – Startseite"><img alt="Hochschule Esslingen" width="226" height="80" style="height:3.4rem;width:auto" src="images/hs-esslingen-logo.png"></a><nav aria-label="Hauptnavigation" style="display:flex;gap:1.25rem"><a href="#nachbestellen">Nachbestellen</a><a href="#lehrkraefte">Für Lehrkräfte</a><a href="#spenden">Spenden</a></nav></div>
+  <div class="hero-grid">
+   <div>
+    <h1>Labor to go: Der Chemiekoffer der Hochschule Esslingen</h1>
+    <p class="lead">Experimente, Material und Arbeitsblätter für den Chemieunterricht in der Oberstufe. Sie erhalten den Koffer per Lieferung oder wir kommen mit Studierenden an Ihre Schule.</p>
+    <div class="btns"><a class="btn" href="#kontakt">Koffer anfragen</a><a class="btn ghost" href="#inhalt">Was steckt drin?</a></div>
+   </div>
+   <figure class="photo" style="margin:0">
+    <svg viewBox="0 0 400 300" role="img" aria-label="Platzhalter: Chemiekoffer mit vier Reagenzgläsern in Lackfarben" width="100%">
+     <rect x="30" y="70" width="340" height="200" rx="16" fill="#0F2D53"/>
+     <rect x="150" y="48" width="100" height="30" rx="10" fill="none" stroke="#0F2D53" stroke-width="10"/>
+     <rect x="46" y="86" width="308" height="168" rx="10" fill="#24407A"/>
+     <g class="vials">
+      <g class="vial"><rect x="72" y="106" width="44" height="130" rx="22" fill="#F2F5F7"/><rect x="72" y="156" width="44" height="80" rx="22" fill="#C32E42"/></g>
+      <g class="vial"><rect x="136" y="106" width="44" height="130" rx="22" fill="#F2F5F7"/><rect x="136" y="136" width="44" height="100" rx="22" fill="#3F7FC1"/></g>
+      <g class="vial"><rect x="220" y="106" width="44" height="130" rx="22" fill="#F2F5F7"/><rect x="220" y="170" width="44" height="66" rx="22" fill="#0F2D53"/></g>
+      <g class="vial"><rect x="284" y="106" width="44" height="130" rx="22" fill="#F2F5F7"/><rect x="284" y="126" width="44" height="110" rx="22" fill="#A9D4F5"/></g>
+     </g>
+    </svg>
+    <figcaption>Illustration des Chemiekoffers mit vier Reagenzgläsern.</figcaption>
+   </figure>
+  </div>
+ </div>
+</header>
+
+<main>
+<section id="inhalt"><div class="wrap">
+ <h2>Was steckt drin?</h2>
+ <p>Alles, was Ihr Kurs für einen Experimentiertag braucht. Die Experimente stammen aus dem Studium Chemieingenieurwesen mit Schwerpunkt Farbe und Lack.</p>
+ <div class="cols three">
+  <div class="panel"><span class="swatch" style="background:var(--accent)"></span><h3>Experimente</h3><p>Mehrere Versuche zu Farbe, Oberflächen und Reaktionen.</p></div>
+  <div class="panel"><span class="swatch" style="background:var(--mid)"></span><h3>Material</h3><p>Geräte und Chemikalien in Schulmengen, fertig verpackt und beschriftet.</p></div>
+  <div class="panel"><span class="swatch" style="background:var(--blue)"></span><h3>Informationen</h3><p>USB-Stick mit Versuchsanleitungen, Kofferinformationen und Sicherheitsdatenblättern.</p></div>
+ </div>
+ <div class="panel" style="margin-top:1.25rem"><span class="swatch" style="background:var(--blue)"></span><h3>Sicherheitshinweise</h3><p>Die Gefährdungsbeurteilung kann bei Bedarf angefragt werden.</p><p style="margin-top:.8rem"><b>Sicherheit:</b> Die Versuche sind unter Beachtung der jeweiligen Sicherheits- und Durchführungshinweise durchzuführen. Die fachlich verantwortliche Lehrkraft führt die erforderliche schulische Gefährdungsbeurteilung durch.</p></div>
+</div></section>
+
+<section id="fuer-wen"><div class="wrap">
+ <h2>Für wen ist der Koffer?</h2>
+ <dl class="facts">
+  <dt>Zielgruppe</dt><dd>Oberstufenkurse an Gymnasien</dd>
+  <dt>Klassenstufen</dt><dd>Stufe 11–13</dd>
+  <dt>Dauer</dt><dd>je nach Auswahl der Versuche</dd>
+  <dt>Lehrplan</dt><dd>Aktuell nur auf den Bildungsplan von Baden-Württemberg abgestimmt. Weitere Bundesländer folgen in Zukunft.</dd>
+ </dl>
+</div></section>
+
+<section id="ablauf"><div class="wrap">
+ <h2>So läuft's ab</h2>
+ <ol class="steps">
+  <li><b>Anfragen</b><span>Sie schicken uns eine Anfrage.</span></li>
+  <li><b>Koffer bekommen oder Besuch</b><span>Wir liefern den Koffer oder kommen mit Studierenden in Ihre Schule.</span></li>
+  <li><b>Experimentieren</b><span>Ihr Kurs arbeitet mit den Arbeitsblättern und Sicherheitskarten.</span></li>
+  <li><b>Feedback</b><span>Sie geben uns eine Rückmeldung zum Koffer und zu den Versuchen, auch im Online-Meeting (alle drei bis sechs Monate).</span></li>
+ </ol>
+</div></section>
+
+<section id="nachbestellen"><div class="wrap">
+ <h2>Nachbestellen</h2>
+ <p>Rohstoffe und Verbrauchsmaterial aus dem Koffer können Sie bei uns nachbestellen. Die Liste zeigt alles, was lieferbar ist. Schicken Sie uns Ihre Bestellung per E-Mail.</p>
+ <p>Alle 3 bis 6 Monate findet ein Online-Meeting statt. Dort sprechen wir über Ihr Feedback und über Nachbestellungen.</p>
+ <div class="btns">
+  <a class="btn" href="mailto:Hendrik.Dubbe@hs-esslingen.de?subject=Nachbestellung%20Chemiekoffer&body=Guten%20Tag%20Herr%20Dubbe%2C%0A%0Awir%20m%C3%B6chten%20folgende%20Materialien%20nachbestellen%3A%0A%0A%E2%80%A2%20Material%3A%20%0A%E2%80%A2%20Menge%3A%20%0A%0ABestelldatum%3A%20TT.MM.JJJJ%0AGew%C3%BCnschter%20Liefertermin%3A%20TT.MM.JJJJ%0A%0ASchule%3A%20%0AAnsprechperson%3A%20%0ALieferadresse%3A%20%0A%0AViele%20Gr%C3%BC%C3%9Fe">
+    Per E-Mail nachbestellen
+  </a>
+</div>
+
+</div></section>
+
+<section id="studium"><div class="wrap">
+ <div class="study">
+  <h2>Einblick ins Studium</h2>
+  <p>Chemieingenieurwesen in Esslingen verbindet Chemie mit Verfahrenstechnik. Im Schwerpunkt Farbe und Lack entwickeln Studierende Beschichtungen, die schützen, färben und halten. Praxisphasen in der Industrie gehören dazu.</p>
+  <blockquote>„Lack ist eine ziemlich spannende Sache. Ich finde es bis heute faszinierend, was eigentlich alles beschichtet ist. In unserem Alltag kommen wir täglich mit „Lack“ in Kontakt. Sei es das lasierte Holz, der Soft-Feel Lack auf einer hochwertigen PC-Maus oder der hochkratzfeste Autolack. Das zeigt, dass es trotz hoher Spezialisierung viele Bereiche gibt, in denen Lackingenieurinnen und -ingenieure arbeiten können.“<footer>Dr. Fabian Schuster, Alumnus des Studiengangs Chemieingenieurwesen / Farbe und Lack</footer></blockquote>
+ </div>
+</div></section>
+
+<section id="lehrkraefte"><div class="wrap">
+ <h2>Für Lehrkräfte</h2>
+ <p>Informationen zur Vorbereitung und zum Einsatz im Unterricht.</p>
+ <details><summary>Lehrplanbezug</summary>
+  <p>Wir bilden die Zusammenhänge zwischen dem Kofferinhalt und dem schulischen Bildungsplan ab, insbesondere im BP BW 2016 V2: 3.3.4 bzw. 3.4.6 Kunststoffe.</p>
+  <p><b>Hinweis:</b> Der Koffer ist aktuell nur auf den Bildungsplan von Baden-Württemberg abgestimmt. Die Lehrpläne weiterer Bundesländer werden in Zukunft folgen.</p>
+  <p><b>Ziel:</b> Bestmögliche Integration in den Unterricht (an verschiedenen Stellen) und kein Zeitverlust durch „komplett neue Themen“.</p>
+ </details>
+ <details><summary>Gefährdungsbeurteilung</summary>
+  <p>Die Gefährdungsbeurteilung für Ihre Schulleitung und die Fachschaft kann bei Bedarf angefragt werden. <a href="mailto:Hendrik.Dubbe@hs-esslingen.de?subject=Anfrage%20Gef%C3%A4hrdungsbeurteilung%20Chemiekoffer">Per E-Mail anfragen</a></p>
+ </details>
+</div></section>
+
+<section id="spenden"><div class="wrap">
+ <h2>Spenden</h2>
+ <p>Der Chemiekoffer ist ein Projekt auf Spendenbasis. Für Schulen ist er kostenlos. Damit das so bleibt, freuen wir uns über Ihre Unterstützung.</p>
+ <div class="btns"><a class="btn" href="mailto:Hendrik.Dubbe@hs-esslingen.de?subject=Spende%20Chemiekoffer&body=Guten%20Tag%20Herr%20Dubbe%2C%0A%0Aich%20m%C3%B6chte%20das%20Projekt%20Chemiekoffer%20gerne%20unterst%C3%BCtzen.%20Bitte%20melden%20Sie%20sich%20bei%20mir.%0A%0AViele%20Gr%C3%BC%C3%9Fe">Projekt unterstützen</a></div>
+</div></section>
+
+<section id="kontakt"><div class="wrap cols two">
+ <div class="col">
+  <h2>Koffer anfragen</h2>
+  <div class="box">
+  <form id="f" action="mailto:Hendrik.Dubbe@hs-esslingen.de" method="post" enctype="text/plain">
+   <label for="n">Name der Ansprechperson</label><input id="n" name="name" required autocomplete="name">
+   <label for="s">Schule</label><input id="s" name="schule" required autocomplete="organization">
+   <label for="a">Adresse</label><input id="a" name="adresse" required autocomplete="street-address" placeholder="Straße, PLZ, Ort">
+   <label for="e">E-Mail</label><input id="e" name="email" type="email" required autocomplete="email">
+   <label for="t">Telefonnummer der Ansprechperson</label><input id="t" name="telefon" type="tel" required autocomplete="tel">
+   <label for="m">Nachricht <span class="optional">(optional)</span></label><textarea id="m" name="nachricht"></textarea>
+   <label for="o">Lieferung oder Besuch?</label>
+   <select id="o" name="wunsch"><option>Koffer per Lieferung</option><option>Besuch an der Schule</option><option>Noch offen</option></select>
+   <button class="btn" type="submit">Anfrage senden</button>
+   <p class="hint" style="margin-top:.8rem">Pro Schule gibt es einen Koffer und eine feste Ansprechperson. Beim Absenden wird Ihr E-Mail-Programm geöffnet; die Anfrage wird an Prof. Dr.-Ing. Hendrik Dubbe adressiert.</p>
+  </form>
+  </div>
+ </div>
+ <div class="col faq">
+  <h2>Häufige Fragen</h2>
+  <div class="box">
+  <details><summary>Was kostet der Koffer?</summary><p>Nichts. Der Koffer ist für Schulen kostenlos. Das Projekt finanziert sich über Spenden.</p></details>
+  <details><summary>Wie viele Koffer bekommt eine Schule?</summary><p>Pro Schule gibt es einen Koffer mit einer festen Ansprechperson.</p></details>
+  <details><summary>Wie lange kann ich den Koffer behalten?</summary><p>Dauerhaft</p></details>
+  <details><summary>Brauchen wir ein Chemie-Labor?</summary><p>Ja, die Versuche sind für den Fachraum Chemie gedacht.</p></details>
+  <details><summary>Wer betreut die Versuche?</summary><p>Die Fachlehrkraft.</p></details>
+  <details><summary>Wie lange dauert es bis der Koffer bei uns an der Schule ankommt?</summary><p>6–8 Wochen nach Bestellung.</p></details>
+  </div>
+ </div>
+</div></section>
+</main>
+
+<footer class="site"><div class="wrap"><p style="margin:0 0 .3rem"><b>Verantwortlich:</b> <a href="https://www.hs-esslingen.de/personen/hendrik-dubbe">Prof. Dr.-Ing. Hendrik Dubbe</a>, Fakultät Angewandte Naturwissenschaften, Energie- und Gebäudetechnik</p><p style="margin:0">Hochschule Esslingen, Campus Stadtmitte, Kanalstraße 33, 73728 Esslingen · <a href="mailto:Hendrik.Dubbe@hs-esslingen.de">Hendrik.Dubbe@hs-esslingen.de</a> · <a href="tel:+497113973562">+49 711 397-3562</a> · <a href="https://www.hs-esslingen.de/impressum">Impressum</a> · <a href="https://www.hs-esslingen.de/datenschutz">Datenschutz</a></p></div></footer>
+
+<script>
+document.getElementById("f").addEventListener("submit",function(ev){
+  ev.preventDefault();
+
+  var value=function(id){
+    return document.getElementById(id).value.trim();
+  };
+
+  var body=[
+    "Ansprechperson: "+value("n"),
+    "Schule: "+value("s"),
+    "Adresse: "+value("a"),
+    "E-Mail: "+value("e"),
+    "Telefon: "+value("t"),
+    "Wunsch: "+value("o"),
+    "",
+    value("m")
+  ].join("\n");
+
+  var mailto="mailto:Hendrik.Dubbe@hs-esslingen.de"
+    +"?subject="+encodeURIComponent("Anfrage Chemiekoffer")
+    +"&body="+encodeURIComponent(body);
+
+  window.location.href=mailto;
+});
+</script>
+</body>
+</html>
