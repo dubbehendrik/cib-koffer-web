@@ -37,8 +37,8 @@ section{padding:3.5rem 0;border-top:1px solid var(--line)}
 /* Hero */
 .hero{border-top:0;padding:2.5rem 0 3.5rem}
 .top{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1rem 0 2.5rem;font-weight:600}
-.logo{display:block}
-.logo img{display:block}
+.logo{display:block;flex:0 1 320px;max-width:100%}
+.logo img{display:block;width:100%;height:auto}
 .hero-grid{display:grid;gap:2.5rem;align-items:center}
 @media(min-width:820px){.hero-grid{grid-template-columns:1.15fr 1fr}}
 .hero p.lead{font-size:1.25rem;color:var(--muted)}
@@ -97,7 +97,7 @@ nav a{white-space:nowrap}
 @media(max-width:640px){
  section{padding:2.5rem 0}
  .top{flex-wrap:wrap;padding-bottom:1.5rem}
- .logo img{height:2.6rem!important}
+ .logo{flex-basis:280px}
  .btns .btn{width:100%;text-align:center}
  .study{padding:1.4rem}
  blockquote{font-size:1.1rem}
@@ -112,7 +112,7 @@ nav a{white-space:nowrap}
 <aside class="draft-notice" aria-label="Entwurfshinweis"><div class="wrap"><p><strong>Under construction – Website im Entwurf.</strong> Diese Website befindet sich noch im Aufbau. Inhalte und Funktionen werden derzeit überarbeitet.</p></div></aside>
 <header class="hero">
  <div class="wrap">
-  <div class="top"><a class="logo" href="https://www.hs-esslingen.de" aria-label="Hochschule Esslingen – Startseite"><img alt="Hochschule Esslingen" width="226" height="80" style="height:3.4rem;width:auto" src="images/hs-esslingen-logo.png"></a><nav aria-label="Hauptnavigation" style="display:flex;gap:1.25rem"><a href="#nachbestellen">Nachbestellen</a><a href="#lehrkraefte">Für Lehrkräfte</a><a href="#spenden">Spenden</a></nav></div>
+  <div class="top"><a class="logo" href="https://www.hs-esslingen.de/chemieingenieurwesen-farbe-und-lack" aria-label="Studiengang Chemieingenieurwesen – Farbe und Lack der Hochschule Esslingen"><img alt="Hochschule Esslingen – Chemieingenieurwesen, Farbe und Lack; Seminar für Ausbildung und Fortbildung der Lehrkräfte Esslingen" width="1465" height="913" src="images/logo-website.png"></a><nav aria-label="Hauptnavigation" style="display:flex;gap:1.25rem"><a href="#nachbestellen">Nachbestellen</a><a href="#lehrkraefte">Für Lehrkräfte</a><a href="#spenden">Spenden</a></nav></div>
   <div class="hero-grid">
    <div>
     <h1>Labor to go: Der Chemiekoffer der Hochschule Esslingen</h1>
